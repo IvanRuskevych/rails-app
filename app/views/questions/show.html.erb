@@ -1,0 +1,11 @@
+<p><%= Time.now %></p>
+
+<% name = "Ivan" %>
+
+<h1>Hello <%= name %> !!!</h1>
+
+<h2>Питання</h2>
+<p> <%= @question.body %> </p>
+<p> User ID: <b><%= @question.user_id %></b> </p>
+<!--<p><%#= link_to "All questions", "/questions" %></p>-->
+<p><%= link_to "All questions", questions_path %></p>
