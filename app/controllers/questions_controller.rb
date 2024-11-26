@@ -1,16 +1,15 @@
 class QuestionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
-
-
+  # skip_before_action :verify_authenticity_token
 
   def create
     #debugger
 
-    Question.create(
+    question = Question.create(
       body: params[:question][:body],
       user_id: params[:question][:user_id],
     )
+
+    redirect_to question_path(question)
 
     # redirect_to "/"
     # render text: "Запит оброблено"
@@ -24,12 +23,14 @@ class QuestionsController < ApplicationController
       body: params[:question][:body],
       user_id: params[:question][:user_id],
     )
+    redirect_to question_path(@question)
   end
 
   def destroy
-    @question = Question.find(params[:id]),
+    @question = Question.find(params[:id])
     @question.destroy
-    redirect_to "/", notice: "question deleted"
+
+    redirect_to questions_path
   end
 
   def show
@@ -41,8 +42,16 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  private
-  def verify_authenticity_token
-    # code here
+  def new
+    @question = Question.new
   end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  # private
+  # def verify_authenticity_token
+  #   # code here
+  # end
 end

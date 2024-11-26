@@ -1,8 +1,10 @@
 <h2>All questions</h2>
 
-<% @questions.each do |question| %>
-  <p> Question <%= question.id %>...</p>
-<% end %>
+<%# @questions.each do |question| %>
+<!--  <p> Question <%#= question.id %>...</p>-->
+<%# end %>
+
+<p> <%= link_to "Create new question", new_question_path %></p>
 
 <% @questions.each do |question| %>
 <!--  <p> <%#= link_to "Question #{question.id}", "/questions/#{question.id}" %></p>-->
